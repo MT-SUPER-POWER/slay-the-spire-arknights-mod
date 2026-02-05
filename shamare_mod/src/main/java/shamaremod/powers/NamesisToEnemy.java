@@ -17,11 +17,13 @@ import shamaremod.helpers.ImageHelper;
 public class NamesisToEnemy extends AbstractPower {
 
     public static final String POWER_ID = IdHelper.makePath("NamesisToEnemy");
+
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    private boolean has_triggered_this_turn = false;       // 防止多段多次触发报应伤害
 
     public static final String NAME = powerStrings.NAME;
+
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private boolean has_triggered_this_turn1 = false;
 
     public NamesisToEnemy(AbstractCreature owner, int amount) {
         this.name = NAME;
@@ -46,15 +48,15 @@ public class NamesisToEnemy extends AbstractPower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        this.has_triggered_this_turn = false;
+        this.has_triggered_this_turn1 = false;
     }
 
     @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.owner != this.owner && damageAmount > 0 && info.type != DamageType.HP_LOSS) {
-            if (!this.has_triggered_this_turn) {
+        if (info.owner != null && info.owner != this.owner && damageAmount > 0 && info.type != DamageType.THORNS && info.type != DamageType.HP_LOSS) {
+            if (!this.has_triggered_this_turn1) {
                 addToBot(new LoseHPAction(this.owner, this.owner, this.amount));
-                this.has_triggered_this_turn = true;
+                this.has_triggered_this_turn1 = true;
                 addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
             }
         }
@@ -62,14 +64,13 @@ public class NamesisToEnemy extends AbstractPower {
 
     public void trigger_by_hand() {
         addToBot(new LoseHPAction(this.owner, this.owner, this.amount));
-        this.has_triggered_this_turn = true;
+        this.has_triggered_this_turn1 = true;
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
-    // 施加重复能力的堆叠处理逻辑
     @Override
     public void stackPower(int stackAmount) {
-        this.fontScale = 8.0F;          // 能力图标上显示的那个数字瞬间“跳”一下
+        this.fontScale = 8.0F;
         this.amount += stackAmount;
         this.updateDescription();
     }
