@@ -87,6 +87,7 @@ shamaremod\cards\skill\MindControl$1.class
 shamaremod\actions\FireHeartAction.class
 shamaremod\events\BlankDoor.class
 shamaremod\powers\Pardon.class
+shamaremod\potions\RedemptionPotion.class
 shamaremod\cards\skill\SorceryDefend.class
 shamaremod\powers\NamesisToEnemy.class
 shamaremod\relics\GreedCoin.class

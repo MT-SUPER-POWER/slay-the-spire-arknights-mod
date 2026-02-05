@@ -15,35 +15,41 @@ import shamaremod.helpers.IdHelper;
 import shamaremod.powers.Namesis;
 
 public class ViciousPotion extends AbstractPotion {
-  public static final String POTION_ID = IdHelper.makePath("ViciousPotion");
-  
-  private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString( IdHelper.makePath("ViciousPotion"));
-  
-  public ViciousPotion() {
-    super(potionStrings.NAME,  IdHelper.makePath("ViciousPotion") , AbstractPotion.PotionRarity.COMMON, AbstractPotion.PotionSize.SPHERE, AbstractPotion.PotionColor.NONE);
-    ReflectionHacks.setPrivate(this, AbstractPotion.class, "containerImg", new Texture("shamaremod/images/potions/ViciousPotion.png"));
-    this.labOutlineColor = Color.PURPLE;
-    this.isThrown = true;    
-    this.targetRequired = true;
-  }
-  
-  public void initializeData() {
-    this.potency = getPotency();
-    this.description = potionStrings.DESCRIPTIONS[0] + this.potency + potionStrings.DESCRIPTIONS[1];
-    this.tips.clear();
-    this.tips.add(new PowerTip(this.name, this.description));
-  }
-  
-  public void use(AbstractCreature target) {
-     this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Namesis(AbstractDungeon.player, 4), 4));
-     this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new Namesis(target, potency), potency));
-  }
-  
-  public int getPotency(int ascensionLevel) {
-    return 25;
-  }
-  
-  public AbstractPotion makeCopy() {
-    return new ViciousPotion();
-  }
+
+    public static final String POTION_ID = IdHelper.makePath("ViciousPotion");
+
+    private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(IdHelper.makePath("ViciousPotion"));
+
+    public ViciousPotion() {
+        super(potionStrings.NAME, IdHelper.makePath("ViciousPotion"), AbstractPotion.PotionRarity.COMMON, AbstractPotion.PotionSize.SPHERE, AbstractPotion.PotionColor.NONE);
+        this.labOutlineColor = Color.PURPLE;
+        this.isThrown = true;
+        this.targetRequired = true;
+    }
+
+    @Override
+    // * 使用药水时候的提示词
+    public void initializeData() {
+        ReflectionHacks.setPrivate(this, AbstractPotion.class, "containerImg", new Texture("shamaremod/images/potions/ViciousPotion.png"));
+        this.potency = getPotency();
+        this.description = potionStrings.DESCRIPTIONS[0] + this.potency + potionStrings.DESCRIPTIONS[1];
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+    }
+
+    @Override
+    public void use(AbstractCreature target) {
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Namesis(AbstractDungeon.player, 4), 4));
+        this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new Namesis(target, potency), potency));
+    }
+
+    @Override
+    public int getPotency(int ascensionLevel) {
+        return 25;
+    }
+
+    @Override
+    public AbstractPotion makeCopy() {
+        return new ViciousPotion();
+    }
 }

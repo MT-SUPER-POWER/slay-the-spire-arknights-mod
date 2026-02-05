@@ -1,4 +1,5 @@
 package shamaremod.cards.power;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -29,7 +30,7 @@ public class Salvation extends CustomCard {
     public Salvation() {
         // 为了命名规范修改了变量名。这些参数具体的作用见下方
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber=this.baseMagicNumber=4;
+        this.magicNumber = this.baseMagicNumber = 4;
     }
 
     @Override
@@ -47,12 +48,11 @@ public class Salvation extends CustomCard {
         p.useFastAttackAnimation();
         addToBot(new ApplyPowerAction(p, p, new EnergyDownPower(p, 1, true), 1));
         addToBot(new ApplyPowerAction(p, p, new Pardon(p, this.magicNumber), this.magicNumber));
-        
     }
 
-     public AbstractCard makeCopy() {
-      return new Salvation();
-   }
+    @Override
+    public AbstractCard makeCopy() {
+        return new Salvation();
+    }
 
-    
 }

@@ -32,6 +32,7 @@ import shamaremod.modcore.TheCore;
 //注意：人物选择界面的立绘在TheCore文件里面
 // 继承CustomPlayer类
 public class Shamare extends CustomPlayer {
+
     // 火堆的人物立绘（行动前）
     private static final String MY_CHARACTER_SHOULDER_1 = ImageHelper.getOtherImgPath("character", "shoulder1");
     // 火堆的人物立绘（行动后）
@@ -40,18 +41,18 @@ public class Shamare extends CustomPlayer {
     private static final String CORPSE_IMAGE = ImageHelper.getOtherImgPath("character", "corpse");
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            ImageHelper.getImgPathWithSubType("ui","orb","layer5"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer4"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer3"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer2"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer1"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer6"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer5d"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer4d"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer3d"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer2d"),
-            ImageHelper.getImgPathWithSubType("ui","orb","layer1d")
-           
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer5"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer4"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer3"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer2"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer1"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer6"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer5d"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer4d"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer3d"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer2d"),
+        ImageHelper.getImgPathWithSubType("ui", "orb", "layer1d")
+
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
@@ -59,13 +60,11 @@ public class Shamare extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("TheCore:Shamare");
 
     public Shamare(String name) {
-        super(name,SHAMARE_CHARACTER,ORB_TEXTURES,ImageHelper.getImgPathWithSubType("ui","orb","vfx"), LAYER_SPEED, null, null);
-
+        super(name, SHAMARE_CHARACTER, ORB_TEXTURES, ImageHelper.getImgPathWithSubType("ui", "orb", "vfx"), LAYER_SPEED, null, null);
 
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 150.0F * Settings.scale);
-
 
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
         this.initializeClass(
@@ -79,25 +78,23 @@ public class Shamare extends CustomPlayer {
         );
         // 如果你的人物没有动画，那么这些不需要写
 
-        
         // 修改对话气泡的位置
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 220.0F * Settings.scale);
         this.loadAnimation("shamaremod/char_model/char_254_vodfox.atlas", "shamaremod/char_model/char_254_vodfox.json", 0.9F);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-         e.setTime(e.getEndTime() * MathUtils.random());
-         e.setTimeScale(1F);
-
+        e.setTime(e.getEndTime() * MathUtils.random());
+        e.setTimeScale(1F);
 
     }
 
     // 初始卡组的ID，可直接写或引用变量
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        for(int x = 0; x<4; x++) {
+        for (int x = 0; x < 4; x++) {
             retVal.add(Strike.ID);
         }
-        for(int x = 0; x<4; x++) {
+        for (int x = 0; x < 4; x++) {
             retVal.add(Defend.ID);
         }
         retVal.add("ShamareKhas:CurseStrike");
@@ -106,25 +103,24 @@ public class Shamare extends CustomPlayer {
         return retVal;
     }
 
-
     @Override
     public void useFastAttackAnimation() {
         this.state.setAnimation(0, "Attack", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);
         this.state.getCurrent(0).setTimeScale(1.3F); // 加快动画速度
-}   
+    }
 
     @Override
     public void useSlowAttackAnimation() {
         this.state.setAnimation(0, "Attack", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);
         this.state.getCurrent(0).setTimeScale(1.3F); // 加快动画速度
-}
+    }
 
     @Override
     public void playDeathAnimation() {
         this.state.setAnimation(0, "Die", false);
-}
+    }
 
     // 初始遗物的ID，可以先写个原版遗物凑数
     public ArrayList<String> getStartingRelics() {
@@ -140,7 +136,7 @@ public class Shamare extends CustomPlayer {
                 90, // 当前血量
                 90, // 最大血量
                 0, // 初始充能球栏位
-                65, // 初始携带金币
+                90, // 初始携带金币
                 5, // 每回合抽牌数量
                 this, // 别动
                 this.getStartingRelics(), // 初始遗物
@@ -176,7 +172,7 @@ public class Shamare extends CustomPlayer {
     // 高进阶带来的生命值损失
     @Override
     public int getAscensionMaxHPLoss() {
-        return 7;
+        return 10;
     }
 
     // 卡牌的能量字体，没必要修改
@@ -196,7 +192,7 @@ public class Shamare extends CustomPlayer {
     public ArrayList<CutscenePanel> getCutscenePanels() {
         ArrayList<CutscenePanel> panels = new ArrayList<>();
         // 有两个参数的，第二个参数表示出现图片时播放的音效
-        panels.add(new CutscenePanel( ImageHelper.getOtherImgPath("character", "Victory1"), "ATTACK_MAGIC_FAST_1"));
+        panels.add(new CutscenePanel(ImageHelper.getOtherImgPath("character", "Victory1"), "ATTACK_MAGIC_FAST_1"));
         panels.add(new CutscenePanel(ImageHelper.getOtherImgPath("character", "Victory2")));
         panels.add(new CutscenePanel(ImageHelper.getOtherImgPath("character", "Victory3")));
         return panels;
@@ -251,10 +247,10 @@ public class Shamare extends CustomPlayer {
     }
 
     // 以下为原版人物枚举、卡牌颜色枚举扩展的枚举，需要写，接下来要用
-
     // 注意此处是在 MuelSyse 类内部的静态嵌套类中定义的新枚举值
     // 不可将该定义放在外部的 MuelSyse 类中，具体原因见《高级技巧 / 01 - Patch / SpireEnum》
     public static class PlayerColorEnum {
+
         @SpireEnum
         public static PlayerClass SHAMARE_CHARACTER;
 

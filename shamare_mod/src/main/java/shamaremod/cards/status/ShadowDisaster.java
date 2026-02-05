@@ -97,6 +97,7 @@ public class ShadowDisaster extends CustomCard {
         return null;
     }
 
+    @Override
     public void triggerWhenDrawn() {
         if (!this.has_triggered_this_turn) {
             // 随机选择一个【非强化意图】的敌人，并减少其力量

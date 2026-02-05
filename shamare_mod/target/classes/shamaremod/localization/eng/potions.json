@@ -18,5 +18,11 @@
         "DESCRIPTIONS": [
             "For each point of #yNamesis you have, heal 1 HP."
         ]
+    },
+    "ShamareKhas:RedemptionPotion": {
+        "NAME": "Redemption Potion",
+        "DESCRIPTIONS": [
+            "Remove all #yNamesis from yourself."
+        ]
     }
 }

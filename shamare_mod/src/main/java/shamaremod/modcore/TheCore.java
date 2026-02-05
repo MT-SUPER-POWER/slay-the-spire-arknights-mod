@@ -45,6 +45,7 @@ import shamaremod.events.GhostlyEvent;
 import shamaremod.events.KindDoll;
 import shamaremod.helpers.ImageHelper;
 import shamaremod.potions.LivingEssence;
+import shamaremod.potions.RedemptionPotion;
 import shamaremod.potions.ViciousPotion;
 import shamaremod.potions.WitchBlessing;
 import shamaremod.relics.DelicateDoll;
@@ -317,6 +318,7 @@ public class TheCore implements EditCardsSubscriber, EditStringsSubscriber, Edit
         BaseMod.addPotion(ViciousPotion.class, Color.CLEAR, null, null, "ShamareKhas:ViciousPotion", SHAMARE_CHARACTER);
         BaseMod.addPotion(WitchBlessing.class, Color.CLEAR, null, null, "ShamareKhas:WitchBlessing", SHAMARE_CHARACTER);
         BaseMod.addPotion(LivingEssence.class, null, null, null, "ShamareKhas:LivingEssence", SHAMARE_CHARACTER);
+        BaseMod.addPotion(RedemptionPotion.class, Color.PURPLE, null, null, RedemptionPotion.POTION_ID, SHAMARE_CHARACTER);
 
     }
 

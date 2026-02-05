@@ -28,24 +28,27 @@ import shamaremod.cards.power.TheFool;
 import shamaremod.helpers.IdHelper;
 
 public class WitchBlessing extends AbstractPotion {
+
     public static final String POTION_ID = IdHelper.makePath("WitchBlessing");
 
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(IdHelper.makePath("WitchBlessing"));
 
     public WitchBlessing() {
         super(potionStrings.NAME, IdHelper.makePath("WitchBlessing"), AbstractPotion.PotionRarity.UNCOMMON, AbstractPotion.PotionSize.BOTTLE, AbstractPotion.PotionColor.NONE);
-        ReflectionHacks.setPrivate(this, AbstractPotion.class, "containerImg", new Texture("shamaremod/images/potions/WitchBlessing.png"));
-         this.labOutlineColor = Color.PURPLE;
+        this.labOutlineColor = Color.PURPLE;
         this.isThrown = true;
     }
 
+    @Override
     public void initializeData() {
+        ReflectionHacks.setPrivate(this, AbstractPotion.class, "containerImg", new Texture("shamaremod/images/potions/WitchBlessing.png"));
         this.potency = getPotency();
         this.description = potionStrings.DESCRIPTIONS[0] + this.potency + potionStrings.DESCRIPTIONS[1];
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
     }
 
+    @Override
     public void use(AbstractCreature target) {
         for (int i = 0; i < this.potency; i++) {
             AbstractCard powerCard = getRandomShamarePowerCard();
@@ -72,10 +75,12 @@ public class WitchBlessing extends AbstractPotion {
         return powerCards.get(rand.nextInt(powerCards.size()));
     }
 
+    @Override
     public int getPotency(int ascensionLevel) {
         return 2;
     }
 
+    @Override
     public AbstractPotion makeCopy() {
         return new WitchBlessing();
     }

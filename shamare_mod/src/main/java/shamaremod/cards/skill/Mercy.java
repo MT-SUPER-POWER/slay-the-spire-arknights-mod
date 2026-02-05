@@ -30,7 +30,7 @@ public class Mercy extends CustomCard {
     public Mercy() {
         // 为了命名规范修改了变量名。这些参数具体的作用见下方
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.exhaust=true;
+        this.exhaust = true;
     }
 
     @Override
@@ -46,27 +46,20 @@ public class Mercy extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         p.useFastAttackAnimation();
-        if(p.hasPower("ShamareKhas:Namesis")){
+        if (p.hasPower("ShamareKhas:Namesis")) {
             AbstractPower namesispower = p.getPower("ShamareKhas:Namesis");
-            if(namesispower instanceof Namesis){
+            if (namesispower instanceof Namesis) {
                 ((Namesis) namesispower).notifyDynamicCostCards_whenRemoved();
             }
             addToBot(new RemoveSpecificPowerAction(p, p, "ShamareKhas:Namesis"));
         }
-
     }
 
-    
     @Override
     public void triggerOnGlowCheck() {
-        boolean glow = false;
+        // boolean glow = false;
         AbstractPlayer p = com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-        if (p.hasPower("ShamareKhas:Namesis")){
-            glow = true;
-        }
-        else{
-            glow = false;
-        }
+        boolean glow = p.hasPower("ShamareKhas:Namesis");
         if (glow) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } else {
@@ -74,9 +67,9 @@ public class Mercy extends CustomCard {
         }
     }
 
-     public AbstractCard makeCopy() {
-      return new Mercy();
-   }
+    @Override
+    public AbstractCard makeCopy() {
+        return new Mercy();
+    }
 
-    
 }
