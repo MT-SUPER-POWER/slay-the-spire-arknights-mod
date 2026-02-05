@@ -16,13 +16,13 @@
   "ShamareKhas:LivingEssence": {
     "NAME": "生命精华",
     "DESCRIPTIONS": [
-      "你每有1点 #y报应 ,恢复1点生命值。"
+      "你每有1点 #y报应 ,恢复1点生命值 。"
     ]
   },
   "ShamareKhas:RedemptionPotion": {
     "NAME": "瓶装救赎",
     "DESCRIPTIONS": [
-      "消除你身上所有的 #y报应。"
+      "消除你身上所有的 #y报应 。"
     ]
   }
 }

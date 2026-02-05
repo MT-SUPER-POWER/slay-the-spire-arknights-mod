@@ -124,6 +124,9 @@ public class TheCore implements EditCardsSubscriber, EditStringsSubscriber, Edit
         HolyDisaster.resetMagicNumberBonus();
     }
 
+
+    // NOTE: 注册卡牌、遗物、事件、药水的开始位置
+
     // 当basemod开始注册mod卡牌时，便会调用这个函数
     @Override
     public void receiveEditCards() {
@@ -302,9 +305,9 @@ public class TheCore implements EditCardsSubscriber, EditStringsSubscriber, Edit
     @Override
     public void receiveEditRelics() {
 
-        //register relics here
+        // register relics here
         // RelicType表示是所有角色都能拿到的遗物，还是一个角色的独有遗物
-        //BaseMod.addRelicToCustomPool(new EcoSpecimen(),MuelSyse.PlayerColorEnum.MUEL_COLOR);
+        // // BaseMod.addRelicToCustomPool(new EcoSpecimen(),MuelSyse.PlayerColorEnum.MUEL_COLOR);
         BaseMod.addRelicToCustomPool(new ShabbyDoll(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
         BaseMod.addRelicToCustomPool(new DelicateDoll(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
         BaseMod.addRelicToCustomPool(new ExonerationCertificate(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
@@ -313,13 +316,12 @@ public class TheCore implements EditCardsSubscriber, EditStringsSubscriber, Edit
         BaseMod.addRelicToCustomPool(new GreedCoin(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
         BaseMod.addRelic(new SirenKiss(), RelicType.SHARED);
 
-        //register potions here
-        //BaseMod.addPotion(CushionPotion.class, Color.GREEN, Color.YELLOW, Color.CLEAR, "MuelSyseKhas:CushionPotion", MY_CHARACTER);
-        BaseMod.addPotion(ViciousPotion.class, Color.CLEAR, null, null, "ShamareKhas:ViciousPotion", SHAMARE_CHARACTER);
-        BaseMod.addPotion(WitchBlessing.class, Color.CLEAR, null, null, "ShamareKhas:WitchBlessing", SHAMARE_CHARACTER);
-        BaseMod.addPotion(LivingEssence.class, null, null, null, "ShamareKhas:LivingEssence", SHAMARE_CHARACTER);
-        BaseMod.addPotion(RedemptionPotion.class, Color.PURPLE, null, null, RedemptionPotion.POTION_ID, SHAMARE_CHARACTER);
-
+        // register potions here
+        // // BaseMod.addPotion(CushionPotion.class, Color.GREEN, Color.YELLOW, Color.CLEAR, "MuelSyseKhas:CushionPotion", MY_CHARACTER);
+        BaseMod.addPotion(ViciousPotion.class, Color.CLEAR, null, null, ViciousPotion.POTION_ID, SHAMARE_CHARACTER);
+        BaseMod.addPotion(WitchBlessing.class, Color.CLEAR, null, null, WitchBlessing.POTION_ID, SHAMARE_CHARACTER);
+        BaseMod.addPotion(LivingEssence.class, null, null, null, LivingEssence.POTION_ID, SHAMARE_CHARACTER);
+        BaseMod.addPotion(RedemptionPotion.class, Color.CLEAR, null, null, RedemptionPotion.POTION_ID, SHAMARE_CHARACTER);
     }
 
     @Override

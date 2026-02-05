@@ -166,7 +166,7 @@
   },
   "ShamareKhas:FallenBlood": {
     "NAME": "堕落之血",
-    "DESCRIPTION": " 不能被打出, 虚无 NL 抽到时，抽1张牌，获得3层 shamarekhas:报应 ，对一名随机敌人施加12层 shamarekhas:报应 ，将此牌的2张复制置入你的弃牌堆 ",
+    "DESCRIPTION": " 不能被打出, 虚无 NL 抽到时，抽1张牌，获得3层 shamarekhas:报应 ，对随机一名敌人施加12层 shamarekhas:报应 ，将此牌的2张复制置入你的弃牌堆 ",
     "UPGRADE_DESCRIPTION": "对自身施加 !M! 层 shamarekhas:报应 。每当你抽到一张 *灾祸 牌时，抽1张牌。"
   },
   "ShamareKhas:RedForm": {

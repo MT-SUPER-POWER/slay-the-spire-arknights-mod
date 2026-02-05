@@ -37,17 +37,21 @@ public class BlackBile extends CustomCard {
     public void upgrade() {
     }
 
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.dontTriggerOnUseCard) {
             addToBot(new ApplyPowerAction(p, p, new Namesis(p, 3), 3, true, AbstractGameAction.AttackEffect.NONE));
         }
     }
 
+    // 按下 "回合结束" 时发动效果
+    @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         this.dontTriggerOnUseCard = true;
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
     }
 
+    @Override
     public AbstractCard makeCopy() {
         return new BlackBile();
     }

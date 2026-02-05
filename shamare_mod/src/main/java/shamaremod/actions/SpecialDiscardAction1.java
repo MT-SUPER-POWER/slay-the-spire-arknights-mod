@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import shamaremod.cards.status.ShadowDisaster;
 
 public class SpecialDiscardAction1 extends AbstractGameAction {
+
     private AbstractPlayer player;
     private boolean isRandom;
     private boolean endTurn;
@@ -23,7 +24,7 @@ public class SpecialDiscardAction1 extends AbstractGameAction {
     private static final String[] TEXT = uiStrings.TEXT;
     int action_mode = 0;
 
-    public SpecialDiscardAction1(AbstractPlayer player, int amount, boolean isRandom, boolean endTurn,int mode) {
+    public SpecialDiscardAction1(AbstractPlayer player, int amount, boolean isRandom, boolean endTurn, int mode) {
         this.player = player;
         this.isRandom = isRandom;
         this.endTurn = endTurn;
@@ -47,15 +48,16 @@ public class SpecialDiscardAction1 extends AbstractGameAction {
                 for (int i = 0; i < tmp; i++) {
                     AbstractCard c = this.player.hand.getTopCard();
                     this.player.hand.moveToDiscardPile(c);
-                    if (!this.endTurn) c.triggerOnManualDiscard();
+                    if (!this.endTurn) {
+                        c.triggerOnManualDiscard();
+                    }
                     GameActionManager.incrementDiscard(this.endTurn);
                     // 检查弃掉的牌是否是诅咒或状态牌
                     if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {
-                        if(this.action_mode == 0){
+                        if (this.action_mode == 0) {
                             addToBot(new GainEnergyAction(1));
                             addToBot(new DrawCardAction(player, 1));
-                        }
-                        else if(this.action_mode == 1){
+                        } else if (this.action_mode == 1) {
                             addToBot(new DrawCardAction(player, 1));
                             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new ShadowDisaster(), 1, true, true));
                         }
@@ -74,11 +76,10 @@ public class SpecialDiscardAction1 extends AbstractGameAction {
                     GameActionManager.incrementDiscard(this.endTurn);
                     // 检查弃掉的牌是否是诅咒或状态牌
                     if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {
-                        if(this.action_mode == 0){
+                        if (this.action_mode == 0) {
                             addToBot(new GainEnergyAction(1));
                             addToBot(new DrawCardAction(player, 1));
-                        }
-                        else if(this.action_mode == 1){
+                        } else if (this.action_mode == 1) {
                             addToBot(new DrawCardAction(player, 1));
                             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new ShadowDisaster(), 1, true, true));
                         }
@@ -91,8 +92,9 @@ public class SpecialDiscardAction1 extends AbstractGameAction {
                     tickDuration();
                     return;
                 }
-                if (this.player.hand.size() > this.amount)
+                if (this.player.hand.size() > this.amount) {
                     AbstractDungeon.handCardSelectScreen.open(TEXT[0], this.amount, false);
+                }
                 AbstractDungeon.player.hand.applyPowers();
                 tickDuration();
                 return;
@@ -106,11 +108,10 @@ public class SpecialDiscardAction1 extends AbstractGameAction {
                 GameActionManager.incrementDiscard(this.endTurn);
                 // 检查弃掉的牌是否是诅咒或状态牌
                 if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {
-                    if(this.action_mode == 0){
+                    if (this.action_mode == 0) {
                         addToBot(new GainEnergyAction(1));
                         addToBot(new DrawCardAction(player, 1));
-                    }
-                    else if(this.action_mode == 1){
+                    } else if (this.action_mode == 1) {
                         addToBot(new DrawCardAction(player, 1));
                         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new ShadowDisaster(), 1, true, true));
                     }
