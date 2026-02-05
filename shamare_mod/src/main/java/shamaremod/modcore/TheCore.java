@@ -55,51 +55,51 @@ import shamaremod.relics.ShabbyDoll;
 import shamaremod.relics.SirenKiss;
 import shamaremod.relics.SpiralHorn;
 
-
 @SpireInitializer
-public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCharactersSubscriber,EditRelicsSubscriber,EditKeywordsSubscriber,PostBattleSubscriber,OnStartBattleSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber{  
+public class TheCore implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, PostBattleSubscriber, OnStartBattleSubscriber, PostDungeonInitializeSubscriber, PostInitializeSubscriber {
+
     // 实现接口
     // 人物选择界面按钮的图片
-    private static final String MY_CHARACTER_BUTTON =   ImageHelper.getOtherImgPath("character","Character_Button" );
-    private static final String MY_CHARACTER_PORTRAIT = ImageHelper.getOtherImgPath("character","Character_Portrait" );
+    private static final String MY_CHARACTER_BUTTON = ImageHelper.getOtherImgPath("character", "Character_Button");
+    private static final String MY_CHARACTER_PORTRAIT = ImageHelper.getOtherImgPath("character", "Character_Portrait");
     // 攻击牌的背景（小尺寸）
-    private static final String BG_ATTACK_512 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_attack_512");
+    private static final String BG_ATTACK_512 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_attack_512");
     // 能力牌的背景（小尺寸）
-    private static final String BG_POWER_512 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_power_512");
+    private static final String BG_POWER_512 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_power_512");
     // 技能牌的背景（小尺寸）
-    private static final String BG_SKILL_512 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_skill_512");
+    private static final String BG_SKILL_512 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_skill_512");
     // 在卡牌和遗物描述中的能量图标
-    private static final String SMALL_ORB = ImageHelper.getOtherImgPath("character","small_orb");
+    private static final String SMALL_ORB = ImageHelper.getOtherImgPath("character", "small_orb");
     // 攻击牌的背景（大尺寸）
-    private static final String BG_ATTACK_1024 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_attack_1024");
+    private static final String BG_ATTACK_1024 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_attack_1024");
     // 能力牌的背景（大尺寸）
-    private static final String BG_POWER_1024 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_power_1024");
+    private static final String BG_POWER_1024 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_power_1024");
     // 技能牌的背景（大尺寸）
-    private static final String BG_SKILL_1024 = ImageHelper.getImgPathWithSubType("character", "cardback","bg_skill_1024");
+    private static final String BG_SKILL_1024 = ImageHelper.getImgPathWithSubType("character", "cardback", "bg_skill_1024");
     // 在卡牌预览界面的能量图标
-    private static final String BIG_ORB = ImageHelper.getOtherImgPath("character","big_orb");
+    private static final String BIG_ORB = ImageHelper.getOtherImgPath("character", "big_orb");
     // 小尺寸的能量图标（战斗中，牌堆预览）
-    private static final String ENEYGY_ORB = ImageHelper.getOtherImgPath("character","energy_orb");
+    private static final String ENEYGY_ORB = ImageHelper.getOtherImgPath("character", "energy_orb");
     public static final Color MY_COLOR = new Color(102.0F / 255.0F, 0.0F / 255.0F, 102.0F / 255.0F, 1.0F);
 
     public TheCore() {
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
         // 这里注册颜色
-        BaseMod.addColor(SHAMARE_COLOR, MY_COLOR,
-         MY_COLOR, MY_COLOR,
-          MY_COLOR, MY_COLOR,
-           MY_COLOR, MY_COLOR,
-           BG_ATTACK_512,BG_SKILL_512,
-           BG_POWER_512,ENEYGY_ORB,
-           BG_ATTACK_1024,BG_SKILL_1024,
-           BG_POWER_1024,BIG_ORB,
-           SMALL_ORB);
+        BaseMod.addColor(
+                SHAMARE_COLOR, MY_COLOR,
+                MY_COLOR, MY_COLOR,
+                MY_COLOR, MY_COLOR,
+                MY_COLOR, MY_COLOR,
+                BG_ATTACK_512, BG_SKILL_512,
+                BG_POWER_512, ENEYGY_ORB,
+                BG_ATTACK_1024, BG_SKILL_1024,
+                BG_POWER_1024, BIG_ORB,
+                SMALL_ORB);
     }
 
     public static void initialize() {
         new TheCore();
     }
-
 
     @Override
     public void receivePostBattle(AbstractRoom room) {
@@ -116,7 +116,6 @@ public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCh
         resetMagicNumberBonuses();
     }
 
-     
     private void resetMagicNumberBonuses() {
         PoisonDisaster.resetMagicNumberBonus();
         FireDisaster.resetMagicNumberBonus();
@@ -219,8 +218,6 @@ public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCh
         basemod.BaseMod.addCard(new shamaremod.cards.curse.BlackBile());
         basemod.BaseMod.addCard(new shamaremod.cards.curse.FallenBlood());
 
-
-        
     }
 
     @Override
@@ -277,7 +274,7 @@ public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCh
 
             String eventsPath = "shamaremod/localization/" + lang + "/events.json";
             if (Gdx.files.internal(eventsPath).exists()) {
-                BaseMod.loadCustomStringsFile(EventStrings.class,eventsPath);
+                BaseMod.loadCustomStringsFile(EventStrings.class, eventsPath);
                 logger.info("Loaded events.json");
             } else {
                 logger.error("File not found: " + eventsPath);
@@ -286,7 +283,7 @@ public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCh
             logger.error("Failed to load localization files for language: " + lang, e);
         }
     }
-    
+
     @Override
     public void receiveEditCharacters() {
         // 向basemod注册人物
@@ -296,56 +293,53 @@ public class TheCore implements EditCardsSubscriber,EditStringsSubscriber,EditCh
     @Override
     public void receivePostInitialize() {
         // 注册自定义事件
-        BaseMod.addEvent(GhostlyEvent.ID, GhostlyEvent.class,TheBeyond.ID);
-        BaseMod.addEvent(KindDoll.ID, KindDoll.class,Exordium.ID);
-        BaseMod.addEvent(BlankDoor.ID, BlankDoor.class,TheCity.ID);
+        BaseMod.addEvent(GhostlyEvent.ID, GhostlyEvent.class, TheBeyond.ID);
+        BaseMod.addEvent(KindDoll.ID, KindDoll.class, Exordium.ID);
+        BaseMod.addEvent(BlankDoor.ID, BlankDoor.class, TheCity.ID);
     }
 
-   
     @Override
     public void receiveEditRelics() {
 
         //register relics here
         // RelicType表示是所有角色都能拿到的遗物，还是一个角色的独有遗物
         //BaseMod.addRelicToCustomPool(new EcoSpecimen(),MuelSyse.PlayerColorEnum.MUEL_COLOR);
-        BaseMod.addRelicToCustomPool(new ShabbyDoll(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
-        BaseMod.addRelicToCustomPool(new DelicateDoll(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
-        BaseMod.addRelicToCustomPool(new ExonerationCertificate(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
-        BaseMod.addRelicToCustomPool(new FabricApple(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
-        BaseMod.addRelicToCustomPool(new SpiralHorn(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
-        BaseMod.addRelicToCustomPool(new GreedCoin(),Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new ShabbyDoll(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new DelicateDoll(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new ExonerationCertificate(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new FabricApple(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new SpiralHorn(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
+        BaseMod.addRelicToCustomPool(new GreedCoin(), Shamare.PlayerColorEnum.SHAMARE_COLOR);
         BaseMod.addRelic(new SirenKiss(), RelicType.SHARED);
 
         //register potions here
         //BaseMod.addPotion(CushionPotion.class, Color.GREEN, Color.YELLOW, Color.CLEAR, "MuelSyseKhas:CushionPotion", MY_CHARACTER);
         BaseMod.addPotion(ViciousPotion.class, Color.CLEAR, null, null, "ShamareKhas:ViciousPotion", SHAMARE_CHARACTER);
         BaseMod.addPotion(WitchBlessing.class, Color.CLEAR, null, null, "ShamareKhas:WitchBlessing", SHAMARE_CHARACTER);
-        BaseMod.addPotion(LivingEssence.class, null,null,null, "ShamareKhas:LivingEssence", SHAMARE_CHARACTER);
+        BaseMod.addPotion(LivingEssence.class, null, null, null, "ShamareKhas:LivingEssence", SHAMARE_CHARACTER);
 
-
-}
-
-
-@Override
-public void receiveEditKeywords() {
-    Gson gson = new Gson();
-    String lang = "eng"; 
-    if (Settings.language == Settings.GameLanguage.ZHS) {
-        lang = "zhs";
     }
-    logger.info("Loading keywords for language: " + lang);
 
-    String json = Gdx.files.internal("shamaremod/localization/" + lang + "/keywords.json")
-            .readString(String.valueOf(StandardCharsets.UTF_8));
-    Keyword[] keywords = gson.fromJson(json, Keyword[].class);
-    if (keywords != null) {
-        for (Keyword keyword : keywords) {
-            // 这个id要全小写
-            BaseMod.addKeyword("shamarekhas", keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
-           logger.info("Loaded keyword: " + keyword.NAMES[0]);
+    @Override
+    public void receiveEditKeywords() {
+        Gson gson = new Gson();
+        String lang = "eng";
+        if (Settings.language == Settings.GameLanguage.ZHS) {
+            lang = "zhs";
         }
-    } else {
-         logger.warn("No keywords found for language: " + lang);
-     }
-}
+        logger.info("Loading keywords for language: " + lang);
+
+        String json = Gdx.files.internal("shamaremod/localization/" + lang + "/keywords.json")
+                .readString(String.valueOf(StandardCharsets.UTF_8));
+        Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                // 这个id要全小写
+                BaseMod.addKeyword("shamarekhas", keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
+                logger.info("Loaded keyword: " + keyword.NAMES[0]);
+            }
+        } else {
+            logger.warn("No keywords found for language: " + lang);
+        }
+    }
 }

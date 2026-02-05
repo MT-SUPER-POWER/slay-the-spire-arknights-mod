@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- 改成你需要的名称 -->
-    <groupId>Operator_Shamare</groupId>
+    <groupId>Arknight_Shamare_Maintained</groupId>
     <!-- 改成你需要的名称 -->
-    <artifactId>Operator_Shamare</artifactId>
+    <artifactId>Arknight_Shamare_Maintained</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!-- 改成你需要的名称 -->
-    <name>Operator_Shamare</name>
+    <name>Arknight_Shamare_Maintained</name>
     <!-- 改不改由你 -->
-    <description>a sts mod.</description>
+    <description>This is a maintained version of Arknights Shamare</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -24,7 +24,7 @@
         <!-- *****一定要改 ***** -->
         <!-- 改成你的steam安装路径位置，指向steamapps文件夹（该目录安装了杀戮尖塔及mod） -->
         <!-- 注意使用正斜杠（/）而不是反斜杠（\） -->
-        <Steam.path>D:/steam1/steamapps</Steam.path>
+        <Steam.path>D:/App/Steam/steamapps</Steam.path>
     </properties>
 
     <dependencies>
@@ -70,9 +70,11 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
+                        <!-- 编译出来的 jar 包的位置，并且把这个 jar 包直接送到尖塔的模组文件夹下 -->
                         <configuration>
                             <target>
-                                <copy file="target/${project.artifactId}.jar" tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar"/>
+                                <copy file="target/${project.artifactId}.jar"
+                                    tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar" />
                             </target>
                         </configuration>
                         <goals>

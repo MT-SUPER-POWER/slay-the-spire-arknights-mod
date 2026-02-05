@@ -24,7 +24,7 @@ public class BlackBile extends CustomCard {
     private static final int COST = -2;
     private static final String DESCRIPTION = CARD_STRINGS.DESCRIPTION;
     private static final CardType TYPE = CardType.CURSE;
-    private static final CardColor COLOR =  AbstractCard.CardColor.CURSE;
+    private static final CardColor COLOR = AbstractCard.CardColor.CURSE;
     private static final CardRarity RARITY = CardRarity.CURSE;
     private static final CardTarget TARGET = CardTarget.SELF;
 
@@ -38,25 +38,17 @@ public class BlackBile extends CustomCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.dontTriggerOnUseCard)
-            addToBot(new ApplyPowerAction(p, p, new Namesis(p, 3),3, true, AbstractGameAction.AttackEffect.NONE));
+        if (this.dontTriggerOnUseCard) {
+            addToBot(new ApplyPowerAction(p, p, new Namesis(p, 3), 3, true, AbstractGameAction.AttackEffect.NONE));
+        }
+    }
 
-  }
-  
-  public void triggerOnEndOfTurnForPlayingCard() {
+    public void triggerOnEndOfTurnForPlayingCard() {
         this.dontTriggerOnUseCard = true;
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
-  }
+    }
 
-   
-
-     public AbstractCard makeCopy() {
-      return new BlackBile();
-   }
-
-    
+    public AbstractCard makeCopy() {
+        return new BlackBile();
+    }
 }
-
-
-
-
