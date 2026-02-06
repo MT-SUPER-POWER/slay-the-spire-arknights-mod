@@ -15,20 +15,18 @@ import shamaremod.helpers.IdHelper;
 import shamaremod.helpers.ImageHelper;
 
 public class SorceryWeak extends AbstractPower {
+
     public static final String POWER_ID = IdHelper.makePath("SorceryWeak");
-    
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    
+
     public static final String NAME = powerStrings.NAME;
-    
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    
+
     private boolean attackedThisTurn = false;
-    
     private static final float DAMAGE_MULTIPLIER = 0.5F;
-    
+
     public SorceryWeak(AbstractMonster owner, int amount) {
-        //注意，该buff只能用在monster身上！！
+        // 注意，该buff只能用在monster身上！！
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -37,23 +35,24 @@ public class SorceryWeak extends AbstractPower {
         this.type = AbstractPower.PowerType.DEBUFF;
         this.isTurnBased = true;
 
-           // 添加一大一小两张能力图
+        // 添加一大一小两张能力图
         String path128 = ImageHelper.getOtherImgPath("powers", "SorceryWeak_96");
         String path48 = ImageHelper.getOtherImgPath("powers", "SorceryWeak_35");
         this.region128 = new AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 96, 96);
         this.region48 = new AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 35, 35);
     }
-    
+
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] ;
+        this.description = DESCRIPTIONS[0];
     }
 
+    @Override
     public void stackPower(int stackAmount) {
         this.fontScale = 8.0F;
         this.amount += stackAmount;
     }
-    
+
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
@@ -61,7 +60,7 @@ public class SorceryWeak extends AbstractPower {
         }
         return damage;
     }
-    
+
     @Override
     public void atEndOfRound() {
         if (this.attackedThisTurn) {
@@ -73,7 +72,7 @@ public class SorceryWeak extends AbstractPower {
         }
         this.attackedThisTurn = false;
     }
-    
+
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.owner == this.owner && damageAmount > 0) {
@@ -81,14 +80,14 @@ public class SorceryWeak extends AbstractPower {
         }
     }
 
-     @Override
+    @Override
     public void atStartOfTurn() {
         if (this.owner instanceof AbstractMonster) {
             AbstractMonster monster = (AbstractMonster) this.owner;
-            if (monster.intent == AbstractMonster.Intent.ATTACK || 
-                monster.intent == AbstractMonster.Intent.ATTACK_BUFF || 
-                monster.intent == AbstractMonster.Intent.ATTACK_DEBUFF || 
-                monster.intent == AbstractMonster.Intent.ATTACK_DEFEND) {
+            if (monster.intent == AbstractMonster.Intent.ATTACK
+                    || monster.intent == AbstractMonster.Intent.ATTACK_BUFF
+                    || monster.intent == AbstractMonster.Intent.ATTACK_DEBUFF
+                    || monster.intent == AbstractMonster.Intent.ATTACK_DEFEND) {
                 this.attackedThisTurn = true;
             }
         }

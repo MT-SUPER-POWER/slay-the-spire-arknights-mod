@@ -33,11 +33,11 @@ public abstract class ImageHelper {
 
     // 获取通用图片路径
     public static String getOtherImgPath(String resourceType, String name) {
-        return BASE_PATH + resourceType  + "\\" + name + ".png";
+        return BASE_PATH + resourceType + "\\" + name + ".png";
     }
 
-    public static String getImgPathWithSubType(String resourceType,String SubType, String name) {
-        return BASE_PATH + resourceType + "\\"  + SubType + "\\"  + name + ".png";
+    public static String getImgPathWithSubType(String resourceType, String SubType, String name) {
+        return BASE_PATH + resourceType + "\\" + SubType + "\\" + name + ".png";
     }
 
     public static String get_event_img(String Imgname) {
