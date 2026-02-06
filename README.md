@@ -5,25 +5,17 @@
 - [BaseMod Wiki](https://github.com/daviscook477/BaseMod/wiki#for-modders)
 
 ## 简介
-觉得特别有趣的一个 [mod 设计](https://steamcommunity.com/sharedfiles/filedetails/?id=3340981749)，但是[大佬](https://steamcommunity.com/profiles/76561198389808017)好像不再维护了，尝试对这个项目现存的 BUG 维护，感谢[大佬开源](https://github.com/KhasAlushird/slay-the-spire-arknights-mod-Shamare)。
-
-## 补充说明
-在实现自己的 TODO 的时候，问了群友，发现自己想的 TODO 理念是不合理的，所以就打算修复敌人报应不生效这个问题，其余的就都不做处理。但是我还是会发行两个版本，一个是只修复了报应问题的版本，另一个是包含所有我想做的 TODO 的版本。后者我会用 alpha 分支做表示的。
+[杀戮尖塔明日方舟角色 mod - 巫恋](https://steamcommunity.com/sharedfiles/filedetails/?id=3340981749) 的改动版本，具体改动在 TODO 部分。
+这里说一个点，对邪影灾祸改动是因为因为如果在心脏强化回合减少的力量，在其强化回合结束会反向增加为心脏的力量，然后心脏的数值膨胀的有点夸张，挺吓人的，但是真要打还是有很多方法的，我也不知道我这个改动算不算对的，我后续玩的时候看看这个机制下巫恋的胜率吧，如果胜率很高的话，我就改回去。
 
 ## TODO
-- 待做的: 做多个发行版本
 - ~~问题: 边缘行者给的诅咒(堕落之血)给敌方上的报应不生效~~
-- ~~问题: 邪影灾祸在心脏强化回合减少的力量，在其强化回合结束会反向增加为心脏的力量~~
+- ~~机制改动: 邪影灾祸只会降低有攻击意图的敌人的力量一回合~~
 - ~~想做的: 救赎药水，删除身上所有的报应，定为稀有药水~~
 - ~~想做的: 让巫恋的巫术易伤和脆弱也可以和战士或者猎人的卡牌效果联动，譬如说飞身踢和足跟勾可以配合~~
 
 ## MOD 使用方式
-> [!note]
-> 除了取 release 去下载，这里还提供了网盘的下载方式
-- [通过网盘分享的文件：v0.9.2.zip](https://pan.baidu.com/s/1TRfDjZbzpSpg8kdPXPs16g)，提取码：`dumk`
-
-下载结束之后，解压 `v0.9.2.zip` 可以拿到 `Arknight_Shamare_Maintained.jar`，把它放到你的 `Path\to\Steam\steamapps\common\SlayTheSpire\mods` 文件夹下，然后 mod 启动器开始游戏，勾选 MOD 就可以了。
+下载结束之后，解压 `v0.x.x.zip` 可以拿到 `Arknight_Shamare_Maintained.jar`，把它放到你的 `/Path/to/Steam/steamapps/common/SlayTheSpire/mods` 文件夹下，然后 mod 启动器开始游戏，勾选 MOD 就可以了。
 
 ## 其它
-若有 bug 或其它可以改进的地方，欢迎[提交 issue](https://github.com/MT-SUPER-POWER/slay-the-spire-arknights-mod) 反馈, 感谢 KhasAlushird 大佬开源。
-现在还没有和大佬取得联系，是一个私人的补丁。大家如果喜欢的话，就自己手动下载这个版本玩吧，玩的开心。
+若有 bug 或其它可以改进的地方，欢迎提交 issue 反馈, 感谢 [KhasAlushird 大佬开源](https://github.com/KhasAlushird/slay-the-spire-arknights-mod-Shamare)。
