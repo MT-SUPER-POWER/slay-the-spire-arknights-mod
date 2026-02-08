@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class TheFoolAction extends AbstractGameAction {
-    private AbstractPlayer p;
+    // private AbstractPlayer p;
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("DiscardAction");
     public static final String[] TEXT = uiStrings.TEXT;
     private final int discard_amt;
@@ -41,9 +41,9 @@ public class TheFoolAction extends AbstractGameAction {
                     addToBot(new WaitAction(0.25F));
                     tickDuration();
                     return;
-                } 
+                }
             }
-    
+
             if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
                 int disasterCount = 0;
                 for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
@@ -57,19 +57,19 @@ public class TheFoolAction extends AbstractGameAction {
                         disasterCount++;
                     }
                 }
-    
+
                 for (int i = 0; i < disasterCount; i++) {
                     player.gainEnergy(1);
                     addToBot((AbstractGameAction)new DrawCardAction(player, 2));
                 }
-    
+
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                 AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
                 this.isDone = true;
             }
-    
+
             tickDuration();
         }
-        
-    
+
+
 }

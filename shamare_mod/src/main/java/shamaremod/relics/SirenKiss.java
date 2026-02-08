@@ -3,7 +3,7 @@ package shamaremod.relics;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+// import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -38,7 +38,8 @@ public class SirenKiss extends CustomRelic {
 
     @Override
     public void onCardDraw(AbstractCard card) {
-        if (!usedThisCombat && (card.type == AbstractCard.CardType.CURSE || card.type == AbstractCard.CardType.STATUS)) {
+        if (!usedThisCombat
+                && (card.type == AbstractCard.CardType.CURSE || card.type == AbstractCard.CardType.STATUS)) {
             flash();
             this.pulse = false;
             addToTop(new DrawCardAction(AbstractDungeon.player, 3));
@@ -50,15 +51,11 @@ public class SirenKiss extends CustomRelic {
 
     @Override
     public void atBattleStart() {
-        AbstractCreature p = AbstractDungeon.player;
+        // AbstractCreature p = AbstractDungeon.player;
         super.atBattleStart();
         addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         usedThisCombat = false;
         this.grayscale = false;
-
-        
-
-
     }
 
     @Override
