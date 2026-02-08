@@ -1,5 +1,5 @@
 # Compiled File
-target/
+**/target/**
 
 # Compiled class file
 *.class
